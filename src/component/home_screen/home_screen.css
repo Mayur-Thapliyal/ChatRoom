@@ -1,0 +1,39 @@
+div.wrap_div {
+    height: 97vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+}
+div.wrap_div_1{
+    background-image: url('../../img/home_frame_6.jpg');
+}
+div.wrap_div_2{
+    background-image: url('../../img/home_frame_2.jpg');
+}
+div.wrap_div_3{
+    background-image: url('../../img/home_frame_3.jpg');
+}
+div.wrap_div_4{
+    background-image: url('../../img/home_frame_4.jpg');
+}
+div.wrap_div_5{
+    background-image: url('../../img/home_frame_5.jpg');
+}
+/* CSS Animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wrap_div {
+  opacity: 1;
+  animation: fade-in 3s ease-in-out;
+}
+
