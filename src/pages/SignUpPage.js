@@ -4,8 +4,7 @@ import Footer from "../component/footer/footer";
 
 import React from 'react'
 
-export default function 
-() {
+export default function SignUpPage() {
 return (
     <div>
         <Nevbar title="Fun chat"/>

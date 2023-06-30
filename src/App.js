@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<HomeScreenPage />}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<LogInPage/>}/>
-        <Route path='/Home' element={<HomePage/>}/>
+        <Route path='/home' element={<HomePage/>}/>
         <Route path='/chat' element={<ChatScreenPage/>}/>
       </Routes>
     </BrowserRouter>
