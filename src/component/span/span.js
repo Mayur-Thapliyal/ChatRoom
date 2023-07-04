@@ -9,8 +9,12 @@ export default function Span(props) {
                     <span className='ErrorSpan'>***Invalid {props.name}</span>
                 </>
                 )
-        case '':
-            break;
+        case 'empty field':
+            return (
+                <>
+                    <span className='EmptySpan'>***{props.name} Field can't be empty</span>
+                </>
+                )
         default:
             return(
             <>
