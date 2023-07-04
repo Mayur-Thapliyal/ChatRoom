@@ -1,0 +1,8 @@
+span.ErrorSpan{
+    color: #d10000f2;
+    display: block;
+    font-size: smaller;
+    padding: 0%;
+    flex: none;
+    position:absolute;
+}
