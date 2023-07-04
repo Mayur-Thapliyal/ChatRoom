@@ -16,18 +16,14 @@
     justify-content: space-around;
 }
 input{
-    height: 5%;
-    width: 50%;
     color: rgb(255, 255, 255);
     background-color: rgb(58 58 58 / 90%);
     border-radius: 8px;
-    
+    margin-top:10% ;
 }
 input::placeholder{
     color: white;}
 input.submit_button{
-    height: 5%;
-    width: 20%;
     color: rgb(255, 255, 255);
     background-color: rgb(58 58 58 / 90%);
     border-radius: 8px;}
