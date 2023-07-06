@@ -1,8 +1,8 @@
 import './signup.css'
 import {useState} from "react";
+import {memo} from 'react'
 import Span from '../span/span';
-
-export default function SignupScreen(){
+function SignupScreen(){
     const [inputs,setInputs] = useState({});
     function validateInput(field_name,input){
         const name_regx = /[^A-Z ]/gi
@@ -111,3 +111,5 @@ export default function SignupScreen(){
         </>
     )
 }
+
+export default memo(SignupScreen);

@@ -1,7 +1,8 @@
 import './span.css'
 import React from 'react'
+import {memo} from 'react'
 
-export default function Span(props) {
+function Span(props) {
     switch (props.error_type){
         case 'invalid':
             return (
@@ -23,3 +24,5 @@ export default function Span(props) {
             )
     }
 }
+
+export default memo(Span)

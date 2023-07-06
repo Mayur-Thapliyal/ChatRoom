@@ -1,8 +1,9 @@
 import './login.css'
 import {useState} from "react";
 import Span from '../span/span';
+import { memo } from 'react';
 
-export default function LoginScreen(){
+function LoginScreen(){
     const [inputs,setInputs] = useState({});
     const email_regx = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
     const phone_number_regx = /(0|91)?[6-9][0-9]{9}$/;
@@ -75,3 +76,4 @@ export default function LoginScreen(){
         </>
     )
 }
+export default memo(LoginScreen)
