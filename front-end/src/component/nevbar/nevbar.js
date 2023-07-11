@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './nevbar.css'
 import icon from "../../img/icon.png"
 function button_click(){
@@ -13,7 +13,7 @@ function button_click(){
       }
     
 }
-export default function Nevbar(props) {
+function Nevbar(props) {
     return (
     <section className="nevbar">
     <div className="nav_wrap" id="nav_wrap_01">
@@ -43,3 +43,4 @@ export default function Nevbar(props) {
 </section>
   )
 }
+export default memo(Nevbar)

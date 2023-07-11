@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import "./footer.css"
 import icon from "../../img/icon.png"
-export default class Footer extends Component {
+class Footer extends Component {
   render() {
     return (
         <footer className="footer">
@@ -25,3 +25,5 @@ export default class Footer extends Component {
     )
   }
 }
+
+export default memo( Footer)
