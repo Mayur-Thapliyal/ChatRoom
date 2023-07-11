@@ -39,7 +39,7 @@ render() {
                 <div className='Input'>
                     <img className='EmojiIcon' src = {emojiIcon}alt='Emoji'></img>
                     <div>
-                        
+                        <input className='sendMessage'/>
                     </div>
                     <img className='SendButton' src={sendIcon} alt='Send'></img>
                 </div>

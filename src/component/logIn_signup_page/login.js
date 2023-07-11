@@ -5,8 +5,8 @@ import { memo } from 'react';
 
 function LoginScreen(){
     const [inputs,setInputs] = useState({});
-    const email_regx = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-    const phone_number_regx = /(0|91)?[6-9][0-9]{9}$/;
+    const email_regx = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ ;
+    const phone_number_regx = /^(0|91)?[6-9][0-9]{9}$/;
     function validateInput(field_name,input){
         switch(field_name){
             case 'phone_number_or_email':
@@ -19,14 +19,13 @@ function LoginScreen(){
     }
     function checkIsAllValid(){
         return (
-                (
                     inputs.phone_number_or_email && 
                     inputs.phone_number_or_email.isvalid === true
                 )
-            )? true:false
     }
     function handleChange (event){
         let {name, value} = event.target;
+        value.match(/^[0-9+]/)?event.target.type = 'number':event.target.type = 'text'
         setInputs(()=>{
             let return_input = {...inputs,[name]:{"value":value}}
             validateInput(name,return_input)
@@ -36,7 +35,6 @@ function LoginScreen(){
     function addSpanTag(){
             let field = inputs.phone_number_or_email
             if(field && field.isvalid === false){
-                console.log()
                 if (field.value.match(/^[0-9+]/)){
                     return <Span error_type='invalid' name='Phone Number'/>
                 }
@@ -57,20 +55,24 @@ function LoginScreen(){
             <div className="login__container">
                 <form className='login_form'>
                     <div>
-                    {addSpanTag()}
-                    <input
-                    placeholder='Phone Number/Email'
-                    type = 'text'
-                    name = 'phone_number_or_email'
-                    value={inputs.phone_number_or_email?inputs.phone_number_or_email.value:''}
-                    onChange={handleChange}
-                        />
+                        {addSpanTag()}
+                        <input
+                        placeholder='Phone Number/Email'
+                        type = 'text'
+                        name = 'phone_number_or_email'
+                        value={inputs.phone_number_or_email?inputs.phone_number_or_email.value:''}
+                        onChange={handleChange}
+                            />
                     </div>
-                    Gotham City 10.0 Km
-                    <input className='submit_button'
-                        value={"Log In"}
-                        disabled={checkIsAllValid()}
-                        type = 'submit'/>
+                    <div className='quote'>
+                        Gotham City 10.0 Km
+                    </div>
+                    <div>
+                        <input className='submit_button'
+                            value={"Log In"}
+                            disabled={checkIsAllValid()}
+                            type = 'submit'/>
+                    </div>
                 </form>
             </div>
         </>

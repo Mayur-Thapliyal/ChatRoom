@@ -7,7 +7,7 @@ function SignupScreen(){
     function validateInput(field_name,input){
         const name_regx = /[^A-Z ]/gi
         const age_regx = /[0-9]{1,2}/
-        const email_regx = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ 
+        const email_regx = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ 
         const phone_number_regx = /(0|91)?[6-9][0-9]{9}$/
         switch(field_name){
             case 'name':
@@ -38,7 +38,6 @@ function SignupScreen(){
     }
     function checkIsAllValid(){
         return (
-                (
                     inputs.name && 
                     inputs.age && 
                     inputs.phone_number && 
@@ -50,9 +49,6 @@ function SignupScreen(){
                     inputs.phone_number.isvalid === true &&
                     inputs.email.isvalid === true
                 )
-            )? true:false
-            
-
     }
     return(
         <>

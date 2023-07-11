@@ -16,20 +16,22 @@
     justify-content: space-around;
 }
 input{
-    display: block;
     color: rgb(255, 255, 255);
     background-color: rgb(58 58 58 / 90%);
+    margin-top: 25px;  
+    width: 100%;
+    height: 80%;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    margin-top: 10%;
+    box-sizing: border-box;
 }
 input::placeholder{
     color: white;}
 input.submit_button{
-    height: 5%;
-    width: 20%;
     color: rgb(255, 255, 255);
     background-color: rgb(58 58 58 / 90%);
-    border-radius: 8px;}
+    border-radius: 8px;
+    }
 .login_form {
     display: flex;
     height: 80%;
@@ -37,7 +39,6 @@ input.submit_button{
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    flex-wrap: nowrap;
     border-radius: 11%;
     background-image: url('../../img/signup_batman_bg.jpg');
     background-size: cover;
