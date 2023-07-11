@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import './home_body.css';
 // class HomeBody extends Component {
 //   constructor(){
@@ -60,4 +60,4 @@ function HomeBody(){
         )
 }
 
-export default HomeBody
+export default memo( HomeBody)

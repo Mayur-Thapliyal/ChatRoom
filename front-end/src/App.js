@@ -1,10 +1,13 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomeScreenPage from './pages/HomeScreenPage';
-import SignUpPage from './pages/SignUpPage';
-import LogInPage from './pages/LogInPage';
-import HomePage from './pages/HomePage';
-import ChatScreenPage from './pages/ChatScreenPage';
+import { Suspense,lazy } from 'react';
+
+const HomeScreenPage = lazy(()=>import('./pages/HomeScreenPage'))
+const SignUpPage = lazy(()=>import('./pages/SignUpPage'))
+const LogInPage = lazy(()=>import('./pages/LogInPage'))
+const HomePage = lazy(()=>import('./pages/HomePage'))
+const ChatScreenPage = lazy(()=>import('./pages/ChatScreenPage'))
+
 
 
 function App() { 
