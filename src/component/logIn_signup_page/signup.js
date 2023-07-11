@@ -1,28 +1,26 @@
 import './signup.css'
 import {useState} from "react";
-
-export default function SignupScreen(){
+import {memo} from 'react'
+import Span from '../span/span';
+function SignupScreen(){
     const [inputs,setInputs] = useState({});
     function validateInput(field_name,input){
         const name_regx = /[^A-Z ]/gi
-        const age_regx = /[0-9]{2}/gi
-        const email_regx = /^[\w!#$%&'*+/=?`{|}~^-]+(?:\.[\w!#$%&'*+/=?`{|}~^-]+)*@↵(?:[A-Z0-9-]+input['phone_number']['value']\.)+[A-Z]{2,6}$/gi
+        const age_regx = /[0-9]{1,2}/
+        const email_regx = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ 
         const phone_number_regx = /(0|91)?[6-9][0-9]{9}$/
-        let match_result =''
         switch(field_name){
             case 'name':
-                input['name']['value'].match(name_regx) ? input['name']["isvalid"] = false :input['name']["isvalid"] = true
+                name_regx.test(input['name']['value'])? input['name']["isvalid"] = false :input['name']["isvalid"] = true
                 break;
             case 'age':
-                match_result=input['age']['value'].match(age_regx)
-                match_result && match_result[0]===input['age']['value'] ? input['age']["isvalid"] = true :input['age']["isvalid"] = false
+                age_regx.test(input['age']['value']) ? input['age']["isvalid"] = true :input['age']["isvalid"] = false
                 break;
             case 'phone_number':
-                match_result =(input['phone_number']['value'].match(phone_number_regx))
-                match_result && match_result[0]===input['phone_number']['value'] ? input['phone_number']["isvalid"] = true :input['phone_number']["isvalid"] = false
+                phone_number_regx.test( input['phone_number']['value']) ? input['phone_number']["isvalid"] = true :input['phone_number']["isvalid"] = false
                 break;
             case 'email':
-                input['email']['value'].match(email_regx) ? input['email']["isvalid"] = false :input['email']["isvalid"] = true
+                email_regx.test( input['email']['value']) ? input['email']["isvalid"] = true :input['email']["isvalid"] = false
                 break;
             default:
                 break;
@@ -38,12 +36,27 @@ export default function SignupScreen(){
             return return_input
         })
     }
+    function checkIsAllValid(){
+        return (
+                    inputs.name && 
+                    inputs.age && 
+                    inputs.phone_number && 
+                    inputs.email 
+                ) &&
+                (
+                    inputs.name.isvalid === true &&
+                    inputs.age.isvalid === true &&
+                    inputs.phone_number.isvalid === true &&
+                    inputs.email.isvalid === true
+                )
+    }
     return(
         <>
             <div className="background"></div>
             <div className="signup__container">
                 <form className='signup_form'>
-                    {console.log(inputs)}
+                    <div>
+                    {inputs.name  && inputs.name.isvalid === false?<Span error_type='invalid' name='Name'/>:null}
                     <input 
                         placeholder='Name'
                         type="text" 
@@ -51,6 +64,9 @@ export default function SignupScreen(){
                         onChange={handleChange}
                         value={inputs.name?inputs.name.value:''}
                         />
+                    </div>
+                    <div>
+                    {inputs.age  && inputs.age.isvalid === false?<Span error_type='invalid' name="Age"/>:null}
                     <input 
                     placeholder='Age'
                     type="number" 
@@ -59,6 +75,9 @@ export default function SignupScreen(){
                     value={inputs.age?inputs.age.value:''} 
                     onChange={handleChange}
                     />
+                    </div>
+                    <div>
+                    {inputs.phone_number  && inputs.phone_number.isvalid === false?<Span error_type='invalid' name="Phone Number"/>:null}
                     <input
                     placeholder='Phone Number'
                     type = 'number'
@@ -66,6 +85,9 @@ export default function SignupScreen(){
                     value={inputs.phone_number?inputs.phone_number.value:''} 
                     onChange={handleChange}
                         />
+                    </div>
+                    <div>
+                    {inputs.email  && inputs.email.isvalid === false?<Span error_type='invalid' name="Email"/>:null}
                     <input
                         placeholder='Email'
                         type = 'text'
@@ -73,10 +95,17 @@ export default function SignupScreen(){
                         value={inputs.email?inputs.email.value:''} 
                         onChange={handleChange}
                         />
-                    <input className='submit_button'
+                    </div>
+                    <div>
+                        <input className='submit_button'
+                        disabled ={(!checkIsAllValid())}
+                        value="Sign Up"
                         type = 'submit'/>
+                    </div>
                 </form>
             </div>
         </>
     )
 }
+
+export default memo(SignupScreen);

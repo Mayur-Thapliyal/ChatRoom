@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, memo } from 'react'
 import "./chat_section.css"
 import userIcon from "../../img/demoDP.jpg"
 import emojiIcon from "../../img/happy.png"
@@ -6,7 +6,7 @@ import sendIcon from "../../img/send.png"
 import greenDot from "../../img/greendot.png"
 const user_name = 'Mayur\'s_id'
 const active_state = 'Active'
-export default class ChatSection extends Component {
+class ChatSection extends Component {
 render() {
     return (
         <section className='ChatScreenBody'>
@@ -39,7 +39,7 @@ render() {
                 <div className='Input'>
                     <img className='EmojiIcon' src = {emojiIcon}alt='Emoji'></img>
                     <div>
-                        
+                        <input className='sendMessage'/>
                     </div>
                     <img className='SendButton' src={sendIcon} alt='Send'></img>
                 </div>
@@ -49,3 +49,4 @@ render() {
     )
   }
 }
+export default memo( ChatSection)

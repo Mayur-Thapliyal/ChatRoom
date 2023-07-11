@@ -1,5 +1,5 @@
 import './home_screen.css'
-// import {useState} from "react";
+import {memo} from "react";
 // import {useEffect} from "react";
 // import { motion, useAnimation } from "framer-motion";
 // import { useInView } from "react-intersection-observer";
@@ -62,7 +62,7 @@ import './home_screen.css'
 //         </div>
 //     )
 // }
-export default function HomeScreen(props){
+function HomeScreen(props){
     return(
         <div className="home_screen_wrap">
             <div className='wrap_div_1 wrap_div' ></div>
@@ -73,4 +73,4 @@ export default function HomeScreen(props){
         </div>
     )
 }
-
+export default memo(HomeScreen)
